@@ -1,0 +1,49 @@
+# 🛡️ Linux Security Auditor 
+
+A comprehensive Python tool that performs **45+ security checks** on Linux
+systems and generates a detailed hardening report with a security score.
+
+Built on Kali Linux for cybersecurity professionals, sysadmins, and
+penetration testers.
+
+---
+
+## 🔥 Features
+
+- **45+ automated security checks**
+- **8 audit categories**
+- Color-coded terminal output
+- Security score with grade (0-100)
+- JSON report export
+- Fix suggestions for every issue found
+- Rootkit & malware indicators detection
+- Backdoor port scanning
+
+---
+
+## 📋 What It Checks
+
+| Category | Checks |
+|----------|--------|
+| 👤 User & Auth | Root login, empty passwords, UID 0 users, password policy, sudo users |
+| 🌐 Network | Firewall, open ports, IP forwarding, SYN cookies, ICMP redirects |
+| 📂 File System | File permissions, SUID/SGID, world-writable files, unowned files |
+| 🔑 SSH Hardening | 10 SSH settings including root login, key auth, X11, brute force |
+| ⚙️ System & Kernel | Updates, ASLR, core dumps, dmesg, AppArmor/SELinux |
+| 📝 Logging | rsyslog, auditd, log permissions, failed login attempts |
+| 🦠 Malware | Suspicious cron jobs, hidden files, rootkit indicators, backdoor ports |
+| 🔧 Services | Dangerous services, fail2ban status |
+
+---
+
+## 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/kildertech/linux-security-auditor.git
+
+# Go into the project folder
+cd linux-security-auditor
+
+# Run the auditor (requires root)
+sudo python3 auditor.py

@@ -1,0 +1,439 @@
+{
+  "date": "2026-03-26T22:30:16.801587",
+  "hostname": "conaman",
+  "kernel": "6.18.12+kali-amd64",
+  "score": 0,
+  "total_checks": 61,
+  "passed": 21,
+  "failed": 23,
+  "warnings": 10,
+  "results": [
+    {
+      "category": "\ud83d\udc64 USER & AUTHENTICATION",
+      "check": "SSH Root Login",
+      "status": "FAIL",
+      "detail": "Root login via SSH is ENABLED or not explicitly disabled",
+      "fix": "Edit /etc/ssh/sshd_config \u2192 Set PermitRootLogin no \u2192 systemctl restart sshd"
+    },
+    {
+      "category": "\ud83d\udc64 USER & AUTHENTICATION",
+      "check": "Empty Passwords",
+      "status": "PASS",
+      "detail": "No users with empty passwords",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udc64 USER & AUTHENTICATION",
+      "check": "Multiple UID 0 Users",
+      "status": "PASS",
+      "detail": "Only root has UID 0",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udc64 USER & AUTHENTICATION",
+      "check": "Locked Accounts",
+      "status": "INFO",
+      "detail": "48 system accounts are locked (normal)",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udc64 USER & AUTHENTICATION",
+      "check": "Password Max Age",
+      "status": "FAIL",
+      "detail": "Password max age is too long or not set",
+      "fix": "Edit /etc/login.defs \u2192 Set PASS_MAX_DAYS 90"
+    },
+    {
+      "category": "\ud83d\udc64 USER & AUTHENTICATION",
+      "check": "Sudo Users",
+      "status": "INFO",
+      "detail": "Sudo group members: conaman",
+      "fix": "Minimize sudo users. Review: getent group sudo"
+    },
+    {
+      "category": "\ud83d\udc64 USER & AUTHENTICATION",
+      "check": "Sudoers.d Files",
+      "status": "WARNING",
+      "detail": "Found 2 custom sudoers files: /etc/sudoers.d/kali-grant-root, /etc/sudoers.d/ospd-openvas",
+      "fix": "Review each file for unnecessary privileges"
+    },
+    {
+      "category": "\ud83d\udc64 USER & AUTHENTICATION",
+      "check": "System User Shells",
+      "status": "FAIL",
+      "detail": "System users with login shells: sync:/bin/sync\npostgres:/bin/bash",
+      "fix": "Set shell to /usr/sbin/nologin for system accounts"
+    },
+    {
+      "category": "\ud83c\udf10 NETWORK SECURITY",
+      "check": "Firewall",
+      "status": "FAIL",
+      "detail": "NO FIREWALL ACTIVE!",
+      "fix": "sudo ufw enable && sudo ufw default deny incoming"
+    },
+    {
+      "category": "\ud83c\udf10 NETWORK SECURITY",
+      "check": "Total Open Ports",
+      "status": "INFO",
+      "detail": "1 open ports detected",
+      "fix": ""
+    },
+    {
+      "category": "\ud83c\udf10 NETWORK SECURITY",
+      "check": "IP Forwarding",
+      "status": "PASS",
+      "detail": "IPv4 forwarding is disabled",
+      "fix": ""
+    },
+    {
+      "category": "\ud83c\udf10 NETWORK SECURITY",
+      "check": "SYN Cookies",
+      "status": "PASS",
+      "detail": "TCP SYN cookies enabled (SYN flood protection)",
+      "fix": ""
+    },
+    {
+      "category": "\ud83c\udf10 NETWORK SECURITY",
+      "check": "ICMP Redirects",
+      "status": "FAIL",
+      "detail": "ICMP redirects are ACCEPTED (MiTM risk)",
+      "fix": "sysctl -w net.ipv4.conf.all.accept_redirects=0"
+    },
+    {
+      "category": "\ud83c\udf10 NETWORK SECURITY",
+      "check": "Source Routing",
+      "status": "PASS",
+      "detail": "Source routing is disabled",
+      "fix": ""
+    },
+    {
+      "category": "\ud83c\udf10 NETWORK SECURITY",
+      "check": "DNS Servers",
+      "status": "INFO",
+      "detail": "DNS servers: 181.213.132.2, 181.213.132.3, 2804:14d:1:0:181:213:132:2, 2804:14d:1:0:181:213:132:3",
+      "fix": ""
+    },
+    {
+      "category": "\ud83c\udf10 NETWORK SECURITY",
+      "check": "Promiscuous Mode",
+      "status": "PASS",
+      "detail": "No interfaces in promiscuous mode",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcc2 FILE SYSTEM SECURITY",
+      "check": "Permissions: /etc/shadow",
+      "status": "PASS",
+      "detail": "-rw-r----- (correct)",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcc2 FILE SYSTEM SECURITY",
+      "check": "Permissions: /etc/passwd",
+      "status": "PASS",
+      "detail": "-rw-r--r-- (correct)",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcc2 FILE SYSTEM SECURITY",
+      "check": "Permissions: /etc/group",
+      "status": "PASS",
+      "detail": "-rw-r--r-- (correct)",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcc2 FILE SYSTEM SECURITY",
+      "check": "Permissions: /etc/gshadow",
+      "status": "PASS",
+      "detail": "-rw-r----- (correct)",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcc2 FILE SYSTEM SECURITY",
+      "check": "Permissions: /etc/ssh/sshd_config",
+      "status": "FAIL",
+      "detail": "Got -rw-r--r--, expected -rw-------",
+      "fix": "chmod -rw------- /etc/ssh/sshd_config"
+    },
+    {
+      "category": "\ud83d\udcc2 FILE SYSTEM SECURITY",
+      "check": "World-Writable Files",
+      "status": "PASS",
+      "detail": "No world-writable files found",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcc2 FILE SYSTEM SECURITY",
+      "check": "World-Writable Dirs",
+      "status": "PASS",
+      "detail": "All world-writable dirs have sticky bit",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcc2 FILE SYSTEM SECURITY",
+      "check": "Suspicious SUID Files",
+      "status": "WARNING",
+      "detail": "Found 23 non-standard SUID files:\n   /usr/bin/kismet_cap_ti_cc_2531\n   /usr/bin/kismet_cap_hak5_wifi_coconut\n   /usr/bin/kismet_cap_ti_cc_2540\n   /usr/bin/kismet_cap_rz_killerbee\n   /usr/bin/kismet_cap_nxp_kw41z\n   /usr/bin/kismet_cap_nrf_51822\n   /usr/bin/ntfs-3g\n   /usr/bin/fusermount3\n   /usr/bin/rsh-redone-rsh\n   /usr/bin/kismet_cap_ubertooth_one",
+      "fix": "Remove SUID if not needed: chmod u-s <file>"
+    },
+    {
+      "category": "\ud83d\udcc2 FILE SYSTEM SECURITY",
+      "check": "SGID Files",
+      "status": "INFO",
+      "detail": "Found 8 SGID files. Review for unusual entries.",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcc2 FILE SYSTEM SECURITY",
+      "check": "Unowned Files",
+      "status": "PASS",
+      "detail": "All files have valid owners",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcc2 FILE SYSTEM SECURITY",
+      "check": "/tmp noexec",
+      "status": "WARNING",
+      "detail": "/tmp is NOT mounted with noexec (malware risk)",
+      "fix": "Remount: mount -o remount,noexec /tmp"
+    },
+    {
+      "category": "\ud83d\udd11 SSH HARDENING",
+      "check": "SSH Root Login",
+      "status": "FAIL",
+      "detail": "PermitRootLogin is not set! Root login should be disabled",
+      "fix": "Add to /etc/ssh/sshd_config: PermitRootLogin no"
+    },
+    {
+      "category": "\ud83d\udd11 SSH HARDENING",
+      "check": "Password Auth",
+      "status": "FAIL",
+      "detail": "PasswordAuthentication is not set! Password auth should be disabled (use keys)",
+      "fix": "Add to /etc/ssh/sshd_config: PasswordAuthentication no"
+    },
+    {
+      "category": "\ud83d\udd11 SSH HARDENING",
+      "check": "Empty Passwords SSH",
+      "status": "FAIL",
+      "detail": "PermitEmptyPasswords is not set! Empty passwords must be rejected",
+      "fix": "Add to /etc/ssh/sshd_config: PermitEmptyPasswords no"
+    },
+    {
+      "category": "\ud83d\udd11 SSH HARDENING",
+      "check": "X11 Forwarding",
+      "status": "FAIL",
+      "detail": "X11Forwarding = yes (expected: no)",
+      "fix": "Edit /etc/ssh/sshd_config \u2192 X11Forwarding no"
+    },
+    {
+      "category": "\ud83d\udd11 SSH HARDENING",
+      "check": "Max Auth Tries",
+      "status": "FAIL",
+      "detail": "MaxAuthTries is not set! Should be 3 or less to prevent brute force",
+      "fix": "Add to /etc/ssh/sshd_config: MaxAuthTries 3"
+    },
+    {
+      "category": "\ud83d\udd11 SSH HARDENING",
+      "check": "SSH Protocol",
+      "status": "FAIL",
+      "detail": "Protocol is not set! Should use Protocol 2 only",
+      "fix": "Add to /etc/ssh/sshd_config: Protocol 2"
+    },
+    {
+      "category": "\ud83d\udd11 SSH HARDENING",
+      "check": "Agent Forwarding",
+      "status": "FAIL",
+      "detail": "AllowAgentForwarding is not set! Should be disabled if not needed",
+      "fix": "Add to /etc/ssh/sshd_config: AllowAgentForwarding no"
+    },
+    {
+      "category": "\ud83d\udd11 SSH HARDENING",
+      "check": "Client Alive Interval",
+      "status": "FAIL",
+      "detail": "ClientAliveInterval is not set! Should be set for idle timeout",
+      "fix": "Add to /etc/ssh/sshd_config: ClientAliveInterval"
+    },
+    {
+      "category": "\ud83d\udd11 SSH HARDENING",
+      "check": "Login Grace Time",
+      "status": "FAIL",
+      "detail": "LoginGraceTime is not set! Should be 60 seconds or less",
+      "fix": "Add to /etc/ssh/sshd_config: LoginGraceTime 60"
+    },
+    {
+      "category": "\ud83d\udd11 SSH HARDENING",
+      "check": "SSH Banner",
+      "status": "FAIL",
+      "detail": "Banner is not set! Warning banner should be displayed",
+      "fix": "Add to /etc/ssh/sshd_config: Banner /etc/issue.net"
+    },
+    {
+      "category": "\u2699\ufe0f SYSTEM & KERNEL",
+      "check": "System Updates",
+      "status": "FAIL",
+      "detail": "177 packages need updating!",
+      "fix": "sudo apt update && sudo apt upgrade -y"
+    },
+    {
+      "category": "\u2699\ufe0f SYSTEM & KERNEL",
+      "check": "Kernel Version",
+      "status": "INFO",
+      "detail": "Running kernel: 6.18.12+kali-amd64",
+      "fix": ""
+    },
+    {
+      "category": "\u2699\ufe0f SYSTEM & KERNEL",
+      "check": "ASLR",
+      "status": "PASS",
+      "detail": "Full ASLR is enabled (kernel.randomize_va_space = 2)",
+      "fix": ""
+    },
+    {
+      "category": "\u2699\ufe0f SYSTEM & KERNEL",
+      "check": "Core Dumps (SUID)",
+      "status": "PASS",
+      "detail": "SUID core dumps are disabled",
+      "fix": ""
+    },
+    {
+      "category": "\u2699\ufe0f SYSTEM & KERNEL",
+      "check": "dmesg Restriction",
+      "status": "FAIL",
+      "detail": "Any user can read dmesg (info leak)",
+      "fix": "sysctl -w kernel.dmesg_restrict=1"
+    },
+    {
+      "category": "\u2699\ufe0f SYSTEM & KERNEL",
+      "check": "MAC System",
+      "status": "WARNING",
+      "detail": "No Mandatory Access Control (AppArmor/SELinux) detected",
+      "fix": "Install and enable AppArmor: apt install apparmor apparmor-utils"
+    },
+    {
+      "category": "\u2699\ufe0f SYSTEM & KERNEL",
+      "check": "Auto Updates",
+      "status": "FAIL",
+      "detail": "Automatic updates not configured",
+      "fix": "apt install unattended-upgrades"
+    },
+    {
+      "category": "\ud83d\udcdd LOGGING & AUDITING",
+      "check": "rsyslog",
+      "status": "PASS",
+      "detail": "rsyslog is running",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcdd LOGGING & AUDITING",
+      "check": "auditd",
+      "status": "PASS",
+      "detail": "Audit daemon is running",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcdd LOGGING & AUDITING",
+      "check": "Log: /var/log/auth.log",
+      "status": "WARNING",
+      "detail": "/var/log/auth.log not found",
+      "fix": "Check rsyslog configuration"
+    },
+    {
+      "category": "\ud83d\udcdd LOGGING & AUDITING",
+      "check": "Log: /var/log/syslog",
+      "status": "WARNING",
+      "detail": "/var/log/syslog not found",
+      "fix": "Check rsyslog configuration"
+    },
+    {
+      "category": "\ud83d\udcdd LOGGING & AUDITING",
+      "check": "Log: /var/log/kern.log",
+      "status": "WARNING",
+      "detail": "/var/log/kern.log not found",
+      "fix": "Check rsyslog configuration"
+    },
+    {
+      "category": "\ud83d\udcdd LOGGING & AUDITING",
+      "check": "Log: /var/log/faillog",
+      "status": "WARNING",
+      "detail": "/var/log/faillog not found",
+      "fix": "Check rsyslog configuration"
+    },
+    {
+      "category": "\ud83d\udcdd LOGGING & AUDITING",
+      "check": "Log Permissions",
+      "status": "PASS",
+      "detail": "Log files are not world-writable",
+      "fix": ""
+    },
+    {
+      "category": "\ud83d\udcdd LOGGING & AUDITING",
+      "check": "Failed Logins",
+      "status": "INFO",
+      "detail": "Could not parse auth.log",
+      "fix": ""
+    },
+    {
+      "category": "\ud83e\udda0 MALWARE & ROOTKIT",
+      "check": "Suspicious Cron Jobs",
+      "status": "FAIL",
+      "detail": "Found suspicious cron entries:\n   /etc/cron.daily/apt-compat \u2192 contains \"eval \"",
+      "fix": "Investigate and remove unauthorized cron jobs"
+    },
+    {
+      "category": "\ud83e\udda0 MALWARE & ROOTKIT",
+      "check": "Hidden Files in /tmp",
+      "status": "WARNING",
+      "detail": "Found 2 hidden files in temp directories",
+      "fix": "Review: find /tmp /var/tmp /dev/shm -name \".*\" -type f"
+    },
+    {
+      "category": "\ud83e\udda0 MALWARE & ROOTKIT",
+      "check": "Deleted Binary Processes",
+      "status": "PASS",
+      "detail": "No processes running from deleted binaries",
+      "fix": ""
+    },
+    {
+      "category": "\ud83e\udda0 MALWARE & ROOTKIT",
+      "check": "Rootkit Indicator: /usr/bin/Xorg",
+      "status": "FAIL",
+      "detail": "Suspicious file found: /usr/bin/Xorg",
+      "fix": "Run rkhunter or chkrootkit for full scan"
+    },
+    {
+      "category": "\ud83e\udda0 MALWARE & ROOTKIT",
+      "check": "Rootkit Indicator: /tmp/.ICE-unix/..",
+      "status": "FAIL",
+      "detail": "Suspicious file found: /tmp/.ICE-unix/..",
+      "fix": "Run rkhunter or chkrootkit for full scan"
+    },
+    {
+      "category": "\ud83e\udda0 MALWARE & ROOTKIT",
+      "check": "Rootkit Indicator: /tmp/.X11-unix/..",
+      "status": "FAIL",
+      "detail": "Suspicious file found: /tmp/.X11-unix/..",
+      "fix": "Run rkhunter or chkrootkit for full scan"
+    },
+    {
+      "category": "\ud83e\udda0 MALWARE & ROOTKIT",
+      "check": "ld.so.preload",
+      "status": "PASS",
+      "detail": "ld.so.preload does not exist",
+      "fix": ""
+    },
+    {
+      "category": "\ud83e\udda0 MALWARE & ROOTKIT",
+      "check": "Rootkit Scanner",
+      "status": "WARNING",
+      "detail": "No rootkit scanner installed!",
+      "fix": "apt install rkhunter chkrootkit"
+    },
+    {
+      "category": "\ud83d\udd27 SERVICE HARDENING",
+      "check": "fail2ban",
+      "status": "PASS",
+      "detail": "fail2ban is running",
+      "fix": ""
+    }
+  ]
+}
